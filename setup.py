@@ -5,10 +5,10 @@ from os import path
 from distutils.extension import Extension
 from Cython.Build import cythonize
 
-name='mdfreader'
-version = '0.2.4'
+name='mfxreader'
+version = '0.0.1'
 
-description='A Measured Data Format file parser'
+description='A copy of Measured Data Format file parser'
 
 here = path.abspath(path.dirname(__file__))
 # Get the long description from the relevant file
@@ -17,11 +17,11 @@ with open(path.join(here, 'README'), encoding='utf-8') as f:
 long_description=long_description
 
 # The project's main homepage.
-url='https://github.com/ratal/mdfreader'
+url='https://github.com/mattdreisbach/mdfreader.git'
 
 # Author details
-author='Aymeric Rateau'
-author_email='aymeric.rateau@gmail.com'
+author='Aymeric Rateau forked by Matthew Dreisbach'
+author_email='mattdreisbach@live.com'
 
 # Choose your license
 license='GPL3'
@@ -53,17 +53,17 @@ classifiers=[
 ]
 
 # What does your project relate to?
-keywords='Parser MDF file'
+keywords='Parser MDF/mfx file'
 
 # You can just specify the packages manually here if your project is
 # simple. Or you can use find_packages().
-packages=find_packages(exclude=['contrib', 'docs', 'tests*'])
+packages=['mfxreader'],
 
 # List run-time dependencies here.  These will be installed by pip when your
 # project is installed. For an analysis of "install_requires" vs pip's
 # requirements files see:
 # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-install_requires=['numpy>=1.7', 'sympy', 'cython>=0.21']
+install_requires=['numpy>=1.7', 'sympy']
 
 # List additional groups of dependencies here (e.g. development dependencies).
 # You can install these using the following syntax, for example:
@@ -97,17 +97,10 @@ entry_points={
 }
 ext_modules=cythonize(Extension('dataRead', ['dataRead.pyx'], include_dirs=[numpy.get_include()]))
 
-try:
-    setup(name=name, version=version, description=description, long_description=long_description,
-        url=url, author=author, author_email=author_email, license=license, classifiers=classifiers, 
-        keywords=keywords, packages=packages, install_requires=install_requires, extras_require=extras_require, 
-        entry_points=entry_points, ext_modules=ext_modules)
-except SystemExit:  # in case cython failed
-    extras_require.pop('experimental')
-    install_requires.pop(-1)  # removes cython requirement 
-    install_requires.append('bitarray') # replaces cython requirement by bitarray
-    setup(name=name, version=version, description=description, long_description=long_description,
-        url=url, author=author, author_email=author_email, license=license, classifiers=classifiers, 
-        keywords=keywords, packages=packages, install_requires=install_requires, extras_require=extras_require, 
-        entry_points=entry_points)
+
+setup(name=name, version=version, description=description, long_description=long_description,
+    url=url, author=author, author_email=author_email, license=license, classifiers=classifiers, 
+    keywords=keywords, packages=packages, install_requires=install_requires, extras_require=extras_require, 
+    entry_points=entry_points, ext_modules=ext_modules)
+
     
