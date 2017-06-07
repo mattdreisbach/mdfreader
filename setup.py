@@ -5,8 +5,8 @@ from os import path
 from distutils.extension import Extension
 from Cython.Build import cythonize
 
-name='mfxreader'
-version = '0.0.1'
+name='mdfreader'
+version = '0.2.4'
 
 description='A Measured Data Format file parser'
 
@@ -17,10 +17,10 @@ with open(path.join(here, 'README'), encoding='utf-8') as f:
 long_description=long_description
 
 # The project's main homepage.
-url='https://github.com/mattdreisbach/mdfreader'
+url='https://github.com/ratal/mdfreader'
 
 # Author details
-author='Aymeric Rateau forked by matt dreisbach'
+author='Aymeric Rateau'
 author_email='aymeric.rateau@gmail.com'
 
 # Choose your license
