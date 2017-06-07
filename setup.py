@@ -5,7 +5,7 @@ from os import path
 from distutils.extension import Extension
 from Cython.Build import cythonize
 
-name='mdfreader'
+name='mfxreader'
 version = '0.0.1'
 
 description='A Measured Data Format file parser'
