@@ -640,7 +640,7 @@ def _gen_valid_identifier(seq):
     itr = iter(seq)
     # pull characters until we get a legal one for first in identifer
     for ch in itr:
-        if ch == '_' or ch.isalpha():
+        if ch == '_' or '#' or ch.isalpha():
             yield ch
             break
         elif ch.isdigit():
@@ -648,7 +648,7 @@ def _gen_valid_identifier(seq):
 
     # pull remaining characters and yield legal ones for identifier
     for ch in itr:
-        if ch == '_' or ch.isalpha() or ch.isdigit():
+        if ch == '_' or '#' or ch.isalpha() or ch.isdigit():
             yield ch
 
 def _sanitize_identifier(name):
